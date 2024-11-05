@@ -1,0 +1,24 @@
+
+<!> IMPORTANT MESSAGE BELOW <!>
+
+
+Make sure you try to solve an exercise for 10-15 minutes before checking its solution.
+
+If after that time you're still stumped, then don't worry! 
+Reviewing the solution for an exercise is completely ok!
+
+DON'T just copy the whole answer to your file and run it.
+Instead, type out the answer by hand into your file. 
+
+This way, you are tangibly interacting with the code from the answer, not just blindly pasting it in.
+And, since typing out the answer code by hand is a more intentional action, you are more likely to 
+remember the code you typed out!
+
+Once you have typed out the answer and run it, mess with different parts of the answer to try to understand how
+it works.
+
+After doing this, try to answer the question on your own again.
+
+
+This will feel like a slow process at first, but it is truly the FASTEST way to become a better programmer!
+
