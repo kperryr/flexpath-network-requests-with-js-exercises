@@ -107,7 +107,7 @@ Handle the cases for status codes 200 (OK) and
 
 // Exercise 4
 fetchJsonButton.removeEventListener("click", exercise_1_fetchJsonData_event);
-fetchJsonButton.addEventListener("click", () => {
+const exercise_4_getJsonData_event = () => {
   fetch("https://jsonplaceholder.typicode.com/posts/1")
     .then((response) => {
       console.log("Status Code:", response.status);
@@ -126,7 +126,9 @@ fetchJsonButton.addEventListener("click", () => {
       outputDiv.textContent = error.message;
       console.error("Error fetching JSON:", error);
     });
-});
+};
+
+fetchJsonButton.addEventListener("click", exercise_4_getJsonData_event);
 
 /*
 Exercise 5: Setting Custom HTTP Headers
@@ -163,15 +165,35 @@ postDataButton.addEventListener("click", exercise_5_postData_event);
 
 /*
 Exercise 6: Content Negotiation with Accept Header
-Description: Modify the GET request in Exercise 1 to set the Accept header to application/json and log the response headers to the console.
+
+Description: 
+
+Modify the GET request in Exercise 1 to set the 
+Accept header to 'application/json' and log the 
+response headers to the console.
 */
 
 // Exercise 6
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+
+fetchJsonButton.removeEventListener("click", exercise_4_getJsonData_event);
+const exercise_6_getJsonData_event = () => {
+  fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      console.log("Response Headers:", response.headers);
+      return response.json();
+    })
+    .then((data) => {
+      outputDiv.textContent = JSON.stringify(data, null, 2);
+    })
+    .catch((error) => {
+      console.error("Error fetching JSON:", error);
+    });
+};
+fetchJsonButton.addEventListener("click", exercise_6_getJsonData_event);
 
 /*
 Exercise 7: Using Try-Catch for Error Handling
@@ -179,11 +201,19 @@ Description: Wrap the Fetch call in Exercise 2 inside a try-catch block to handl
 */
 
 // Exercise 7
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+fetchTextButton.removeEventListener("click", exercise_2_fetchText_event);
+const exercise_7_fetchText_event = async () => {
+  try {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/posts/5"
+    );
+    const text = await response.text();
+    outputDiv.textContent = text;
+  } catch (error) {
+    console.error("Error fetching text:", error);
+  }
+};
+fetchTextButton.addEventListener("click", exercise_7_fetchText_event);
 
 /*
 Exercise 8: Handling Network Errors
@@ -191,11 +221,19 @@ Description: Simulate a network error by making a request to an invalid URL and 
 */
 
 // Exercise 8
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+fetchJsonButton.removeEventListener("click", exercise_6_getJsonData_event);
+const exercise_8_getJsonData_event = () => {
+  fetch("https://invalid-url")
+    .then((response) => response.json())
+    .then((data) => {
+      outputDiv.textContent = JSON.stringify(data, null, 2);
+    })
+    .catch((error) => {
+      outputDiv.textContent = "Network error occurred";
+      console.error("Network error:", error);
+    });
+};
+fetchJsonButton.addEventListener("click", exercise_8_getJsonData_event);
 
 /*
 Exercise 9: Aborting a Fetch Request
@@ -203,11 +241,46 @@ Description: Use AbortController to abort a Fetch request when the abort-request
 */
 
 // Exercise 9
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+fetchJsonButton.removeEventListener("click", exercise_8_getJsonData_event);
+
+const abortRequestButton = document.getElementById("abort-request-button");
+let controller;
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const exercise_9_event = async () => {
+  controller = new AbortController();
+
+  sleep(5000).then(() =>
+    fetch("https://jsonplaceholder.typicode.com/posts/1", {
+      signal: controller.signal,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        outputDiv.textContent = JSON.stringify(data, null, 2);
+      })
+      .catch((error) => {
+        if (error.name === "AbortError") {
+          outputDiv.textContent = "Fetch request was aborted";
+          console.log("Fetch aborted");
+        } else {
+          console.error("Fetch error:", error);
+        }
+      })
+  );
+};
+
+fetchJsonButton.addEventListener("click", exercise_9_event);
+
+const exercise_9_abort_event = () => {
+  if (controller) {
+    controller.abort();
+  }
+};
+
+abortRequestButton.addEventListener("click", exercise_9_abort_event);
 
 /*
 Exercise 10: Tracking Download Progress
