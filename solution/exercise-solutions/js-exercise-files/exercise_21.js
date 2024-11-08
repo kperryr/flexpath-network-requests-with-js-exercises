@@ -1,9 +1,9 @@
 /*
-Exercise 25: Chaining Promises for Sequential Requests
+Exercise 21: Chaining Promises for Sequential Requests
 Description: Make a Fetch request to get a post, then use data from the response to make another request to get comments for that post. Display the combined data.
 */
 
-// Exercise 25
+// Exercise 21
 fetchJsonButton.addEventListener("click", () => {
   fetch("https://jsonplaceholder.typicode.com/posts/1")
     .then((response) => response.json())
