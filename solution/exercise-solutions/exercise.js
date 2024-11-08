@@ -1,53 +1,132 @@
 /*
 Exercise 1: Making a Simple GET Request with Fetch
-Description: Use the Fetch API to make a GET request to https://jsonplaceholder.typicode.com/posts/1 when 
-the button with ID fetch-json-button is clicked. Display the response data in the #output div.
+
+Description: 
+
+Use the Fetch API to make a GET request to 
+`https://jsonplaceholder.typicode.com/posts/1`
+when the button with ID 'fetch-json-button' is clicked. 
+
+Display the response data in the #output (ID of 'output') div.
 */
 
 // Exercise 1
-let placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const fetchJsonButton = document.getElementById("fetch-json-button");
+const outputDiv = document.getElementById("output");
+
+const exercise_1_fetchJsonData_event = () => {
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((response) => response.json())
+    .then((data) => {
+      outputDiv.textContent = JSON.stringify(data, null, 2);
+    })
+    .catch((error) => {
+      console.error("Error fetching JSON:", error);
+    });
+};
+
+fetchJsonButton.addEventListener("click", exercise_1_fetchJsonData_event);
 
 /*
 Exercise 2: Handling Text Responses
-Description: When the button with ID fetch-text-button is clicked, fetch the text content from https://www.example.com and display it in the #output div.
+
+Description: 
+
+When the button with ID 'fetch-text-button' is clicked, 
+fetch the content from 
+`https://jsonplaceholder.typicode.com/posts/5` 
+and display the result as text in the #output div.
+
 */
 
 // Exercise 2
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const fetchTextButton = document.getElementById("fetch-text-button");
+const exercise_2_fetchText_event = () => {
+  fetch("https://jsonplaceholder.typicode.com/posts/5")
+    .then((response) => response.text())
+    .then((text) => {
+      outputDiv.textContent = text;
+    })
+    .catch((error) => {
+      console.error("Error fetching text:", error);
+    });
+};
+
+fetchTextButton.addEventListener("click", exercise_2_fetchText_event);
 
 /*
 Exercise 3: Making a POST Request with Fetch
-Description: Implement a function that sends a POST request to https://jsonplaceholder.typicode.com/posts 
-with JSON data when the post-data-button is clicked. Display the response in the #output div.
+
+Description: 
+
+Implement a function that sends a POST request to 
+`https://jsonplaceholder.typicode.com/posts`
+with JSON data when the 'post-data-button' is clicked. 
+
+Display the response in the #output div.
 */
 
 // Exercise 3
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const postDataButton = document.getElementById("post-data-button");
+
+const exercise_3_postData_event = () => {
+  const data = {
+    title: "foo",
+    body: "bar",
+    userId: 1,
+  };
+
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      outputDiv.textContent = JSON.stringify(data, null, 2);
+    })
+    .catch((error) => {
+      console.error("Error posting data:", error);
+    });
+};
+
+postDataButton.addEventListener("click", exercise_3_postData_event);
 
 /*
 Exercise 4: Understanding HTTP Status Codes
-Description: Modify the GET request in Exercise 1 to log the HTTP status code to the console. 
-Handle the cases for status codes 200 (OK) and 404 (Not Found) by displaying appropriate messages.
+
+Description: 
+
+Modify the GET request in Exercise 1 to log the HTTP status code to the console. 
+
+Handle the cases for status codes 200 (OK) and 
+404 (Not Found) by displaying appropriate messages.
 */
 
 // Exercise 4
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+fetchJsonButton.removeEventListener("click", exercise_1_fetchJsonData_event);
+fetchJsonButton.addEventListener("click", () => {
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((response) => {
+      console.log("Status Code:", response.status);
+      if (response.status === 200) {
+        return response.json();
+      } else if (response.status === 404) {
+        throw new Error("Resource not found");
+      } else {
+        throw new Error("An error occurred");
+      }
+    })
+    .then((data) => {
+      outputDiv.textContent = JSON.stringify(data, null, 2);
+    })
+    .catch((error) => {
+      outputDiv.textContent = error.message;
+      console.error("Error fetching JSON:", error);
+    });
+});
 
 /*
 Exercise 5: Setting Custom HTTP Headers
@@ -55,11 +134,32 @@ Description: When making the POST request in Exercise 3, add a custom header X-C
 */
 
 // Exercise 5
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+
+fetchJsonButton.removeEventListener("click", exercise_3_postData_event);
+const exercise_5_postData_event = () => {
+  const data = {
+    title: "foo",
+    body: "bar",
+    userId: 1,
+  };
+
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Custom-Header": "MyHeaderValue",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      outputDiv.textContent = JSON.stringify(data, null, 2);
+    })
+    .catch((error) => {
+      console.error("Error posting data:", error);
+    });
+};
+postDataButton.addEventListener("click", exercise_5_postData_event);
 
 /*
 Exercise 6: Content Negotiation with Accept Header
