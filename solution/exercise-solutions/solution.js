@@ -427,7 +427,7 @@ Description:
 
 
 Use the Fetch API to make a GET request to 
-`https://jsonplaceholder.typicode.com/posts/1`
+`https://jsonplaceholder.typicode.com/posts/`
 when the button with ID 'exercise-13-btn' is clicked. 
 
 Update the UI by creating a list of titles from the fetched posts and display
@@ -438,7 +438,7 @@ them in #section-2-output
 // Exercise 13
 const exercise13btn = document.getElementById("exercise-13-btn");
 exercise13btn.addEventListener("click", () => {
-  fetch("https://jsonplaceholder.typicode.com/posts")
+  fetch("https://jsonplaceholder.typicode.com/posts/")
     .then((response) => response.json())
     .then((data) => {
       section2OutputDiv.innerHTML = "";
@@ -471,6 +471,8 @@ Display the list of product IDs in the #section-3-output div.
 // Exercise 14
 const addToCartButtons = document.querySelectorAll(".add-to-cart-button");
 
+// Exercise 14 - Answer in comment below
+/*
 let cart = [];
 
 addToCartButtons.forEach((button) => {
@@ -482,6 +484,7 @@ addToCartButtons.forEach((button) => {
     button.textContent = "Added";
   });
 });
+*/
 
 /*
 Exercise 15: Persisting Cart Data with Session Storage

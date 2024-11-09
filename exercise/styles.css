@@ -29,7 +29,7 @@ button {
   cursor: pointer;
 }
 
-#output, #cors-output, #cart-output {
+#section-1-output, #section-2-outputt, #section-3-output {
   margin-top: 20px;
   padding: 10px;
   background-color: #e2e2e2;
