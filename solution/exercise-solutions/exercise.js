@@ -287,16 +287,16 @@ Description: Modify the request in Exercise 11 to include the mode: 'no-cors' op
 */
 
 // Exercise 11
-corsRequestButton.addEventListener("click", () => {
-  fetch(safeForCorsWorkUrl, { mode: "no-cors" })
-    .then((response) => {
-      corsOutput.textContent = "Request made with no-cors mode";
-      console.log("Response:", response);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-});
+// corsRequestButton.addEventListener("click", () => {
+//   fetch(safeForCorsWorkUrl, { mode: "no-cors" })
+//     .then((response) => {
+//       corsOutput.textContent = "Request made with no-cors mode";
+//       console.log("Response:", response);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// });
 
 /*
 Exercise 12: Handling Preflight Requests
@@ -305,21 +305,21 @@ and observe the preflight OPTIONS request in the Network tab of your browser's d
 */
 
 // Exercise 12
-postDataButton.addEventListener("click", () => {
-  fetch("https://jsonplaceholder.typicode.com/posts/1", {
-    method: "DELETE",
-  })
-    .then((response) => {
-      if (response.ok) {
-        outputDiv.textContent = "Resource deleted successfully";
-      } else {
-        outputDiv.textContent = "Failed to delete resource";
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-});
+// postDataButton.addEventListener("click", () => {
+//   fetch("https://jsonplaceholder.typicode.com/posts/1", {
+//     method: "DELETE",
+//   })
+//     .then((response) => {
+//       if (response.ok) {
+//         outputDiv.textContent = "Resource deleted successfully";
+//       } else {
+//         outputDiv.textContent = "Failed to delete resource";
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// });
 
 /*
 Exercise 13: Updating the UI Based on HTTP Responses
@@ -373,26 +373,26 @@ Description: Modify Exercise 15 to save the cart data in sessionStorage so that 
 
 // Exercise 15
 // Load cart from sessionStorage
-cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-cartOutput.textContent =
-  cart.length > 0 ? `Cart: ${cart.join(", ")}` : "Cart is empty.";
+// cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+// cartOutput.textContent =
+//   cart.length > 0 ? `Cart: ${cart.join(", ")}` : "Cart is empty.";
 
-addToCartButtons.forEach((button) => {
-  const productId = button.getAttribute("data-product-id");
-  if (cart.includes(productId)) {
-    button.classList.add("added-to-cart");
-    button.textContent = "Added";
-  }
-  button.addEventListener("click", () => {
-    if (!cart.includes(productId)) {
-      cart.push(productId);
-      sessionStorage.setItem("cart", JSON.stringify(cart));
-      cartOutput.textContent = `Cart: ${cart.join(", ")}`;
-      button.classList.add("added-to-cart");
-      button.textContent = "Added";
-    }
-  });
-});
+// addToCartButtons.forEach((button) => {
+//   const productId = button.getAttribute("data-product-id");
+//   if (cart.includes(productId)) {
+//     button.classList.add("added-to-cart");
+//     button.textContent = "Added";
+//   }
+//   button.addEventListener("click", () => {
+//     if (!cart.includes(productId)) {
+//       cart.push(productId);
+//       sessionStorage.setItem("cart", JSON.stringify(cart));
+//       cartOutput.textContent = `Cart: ${cart.join(", ")}`;
+//       button.classList.add("added-to-cart");
+//       button.textContent = "Added";
+//     }
+//   });
+// });
 
 /*
 Exercise 16: Handling Malformed JSON Responses
@@ -425,20 +425,20 @@ Description: Implement a function that retries a failed Fetch request up to 3 ti
 */
 
 // Exercise 17
-function fetchWithRetry(url, options = {}, retries = 3) {
-  return fetch(url, options).then((response) => {
-    // You can test the failure state by replacing
-    // `!response.ok` below with `true`
-    if (!response.ok) {
-      if (retries > 0) {
-        return fetchWithRetry(url, options, retries - 1);
-      } else {
-        throw new Error("Max retries reached");
-      }
-    }
-    return response.json();
-  });
-}
+// function fetchWithRetry(url, options = {}, retries = 3) {
+//   return fetch(url, options).then((response) => {
+//     // You can test the failure state by replacing
+//     // `!response.ok` below with `true`
+//     if (!response.ok) {
+//       if (retries > 0) {
+//         return fetchWithRetry(url, options, retries - 1);
+//       } else {
+//         throw new Error("Max retries reached");
+//       }
+//     }
+//     return response.json();
+//   });
+// }
 
 // fetchJsonButton.addEventListener("click", () => {
 //   fetchWithRetry("https://jsonplaceholder.typicode.com/posts/1")
@@ -483,19 +483,19 @@ Description: Make a Fetch request to get a post, then use data from the response
 */
 
 // Exercise 19
-fetchJsonButton.addEventListener("click", () => {
-  fetch("https://jsonplaceholder.typicode.com/posts/1")
-    .then((response) => response.json())
-    .then((post) => {
-      return fetch(
-        `https://jsonplaceholder.typicode.com/posts/${post.id}/comments`
-      )
-        .then((response) => response.json())
-        .then((comments) => {
-          outputDiv.textContent = JSON.stringify({ post, comments }, null, 2);
-        });
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
-});
+// fetchJsonButton.addEventListener("click", () => {
+//   fetch("https://jsonplaceholder.typicode.com/posts/1")
+//     .then((response) => response.json())
+//     .then((post) => {
+//       return fetch(
+//         `https://jsonplaceholder.typicode.com/posts/${post.id}/comments`
+//       )
+//         .then((response) => response.json())
+//         .then((comments) => {
+//           outputDiv.textContent = JSON.stringify({ post, comments }, null, 2);
+//         });
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching data:", error);
+//     });
+// });
