@@ -224,40 +224,40 @@ Description: Use AbortController to abort a Fetch request when the abort-request
 
 // Exercise 9
 
-const abortRequestButton = document.getElementById("abort-request-button");
-let controller;
+// const abortRequestButton = document.getElementById("abort-request-button");
+// let controller;
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// function sleep(ms) {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// }
 
-fetchJsonButton.addEventListener("click", () => {
-  controller = new AbortController();
+// fetchJsonButton.addEventListener("click", () => {
+//   controller = new AbortController();
 
-  sleep(5000).then(() =>
-    fetch("https://jsonplaceholder.typicode.com/posts/1", {
-      signal: controller.signal,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        outputDiv.textContent = JSON.stringify(data, null, 2);
-      })
-      .catch((error) => {
-        if (error.name === "AbortError") {
-          outputDiv.textContent = "Fetch request was aborted";
-          console.log("Fetch aborted");
-        } else {
-          console.error("Fetch error:", error);
-        }
-      })
-  );
-});
+//   sleep(5000).then(() =>
+//     fetch("https://jsonplaceholder.typicode.com/posts/1", {
+//       signal: controller.signal,
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         outputDiv.textContent = JSON.stringify(data, null, 2);
+//       })
+//       .catch((error) => {
+//         if (error.name === "AbortError") {
+//           outputDiv.textContent = "Fetch request was aborted";
+//           console.log("Fetch aborted");
+//         } else {
+//           console.error("Fetch error:", error);
+//         }
+//       })
+//   );
+// });
 
-abortRequestButton.addEventListener("click", () => {
-  if (controller) {
-    controller.abort();
-  }
-});
+// abortRequestButton.addEventListener("click", () => {
+//   if (controller) {
+//     controller.abort();
+//   }
+// });
 
 /*
 Exercise 11: Understanding CORS Errors
@@ -327,24 +327,44 @@ Description: After successfully fetching data in Exercise 1, update the UI by cr
 */
 
 // Exercise 14
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+// fetchJsonButton.addEventListener("click", () => {
+//   fetch("https://jsonplaceholder.typicode.com/posts")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       outputDiv.innerHTML = "";
+//       const ul = document.createElement("ul");
+//       data.forEach((post) => {
+//         const li = document.createElement("li");
+//         li.textContent = post.title;
+//         ul.appendChild(li);
+//       });
+//       outputDiv.appendChild(ul);
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching posts:", error);
+//     });
+// });
 
 /*
 Exercise 15: Managing a Shopping Cart
 Description: Implement functionality to add products to a shopping cart when the buttons 
-with class add-to-cart-button are clicked. Update the #cart-output div to display the list of product IDs in the cart.
+with class 'add-to-cart-button' are clicked. Update the '#cart-output' div to display the list of product IDs in the cart.
 */
 
 // Exercise 15
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const addToCartButtons = document.querySelectorAll(".add-to-cart-button");
+const cartOutput = document.getElementById("cart-output");
+let cart = [];
+
+// addToCartButtons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     const productId = button.getAttribute("data-product-id");
+//     cart.push(productId);
+//     cartOutput.textContent = `Cart: ${cart.join(", ")}`;
+//     button.classList.add("added-to-cart");
+//     button.textContent = "Added";
+//   });
+// });
 
 /*
 Exercise 16: Persisting Cart Data with Session Storage
@@ -353,11 +373,26 @@ Description: Modify Exercise 15 to save the cart data in sessionStorage so that 
 
 // Exercise 16
 // Load cart from sessionStorage
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+cartOutput.textContent =
+  cart.length > 0 ? `Cart: ${cart.join(", ")}` : "Cart is empty.";
+
+addToCartButtons.forEach((button) => {
+  const productId = button.getAttribute("data-product-id");
+  if (cart.includes(productId)) {
+    button.classList.add("added-to-cart");
+    button.textContent = "Added";
+  }
+  button.addEventListener("click", () => {
+    if (!cart.includes(productId)) {
+      cart.push(productId);
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+      cartOutput.textContent = `Cart: ${cart.join(", ")}`;
+      button.classList.add("added-to-cart");
+      button.textContent = "Added";
+    }
+  });
+});
 
 /*
 Exercise 17: Handling Malformed JSON Responses
@@ -365,29 +400,24 @@ Description: Fetch data from a URL that returns malformed JSON and handle the pa
 */
 
 // Exercise 17
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
-
-/*
-Exercise 18: Uploading Files with Fetch
-Description: Implement a file upload functionality that sends a selected file to a server endpoint using Fetch with the POST method.
-*/
-
-/*
-<!-- Add this to your HTML inside #api-section -->
-<input type="file" id="file-input">
-<button id="upload-button">Upload File</button>
-*/
-
-// Exercise 18
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+// fetchJsonButton.addEventListener("click", async () => {
+//   try {
+//     const response = await fetch(
+//       "https://jsonplaceholder.typicode.com/posts/1"
+//     );
+//     let text = await response.text();
+//     text += "}}";
+//     try {
+//       const data = JSON.parse(text);
+//       outputDiv.textContent = JSON.stringify(data, null, 2);
+//     } catch (parseError) {
+//       outputDiv.textContent = "Error parsing JSON";
+//       console.error("JSON parse error:", parseError);
+//     }
+//   } catch (error) {
+//     console.error("Fetch error:", error);
+//   }
+// });
 
 /*
 Exercise 19: Retrying Failed Requests
@@ -395,11 +425,31 @@ Description: Implement a function that retries a failed Fetch request up to 3 ti
 */
 
 // Exercise 19
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+function fetchWithRetry(url, options = {}, retries = 3) {
+  return fetch(url, options).then((response) => {
+    // You can test the failure state by replacing
+    // `!response.ok` below with `true`
+    if (!response.ok) {
+      if (retries > 0) {
+        return fetchWithRetry(url, options, retries - 1);
+      } else {
+        throw new Error("Max retries reached");
+      }
+    }
+    return response.json();
+  });
+}
+
+// fetchJsonButton.addEventListener("click", () => {
+//   fetchWithRetry("https://jsonplaceholder.typicode.com/posts/1")
+//     .then((data) => {
+//       outputDiv.textContent = JSON.stringify(data, null, 2);
+//     })
+//     .catch((error) => {
+//       outputDiv.textContent = error.message;
+//       console.error("Fetch error:", error);
+//     });
+// });
 
 /*
 Exercise 20: Parallel Requests with Promise.all
@@ -408,11 +458,24 @@ https://jsonplaceholder.typicode.com/posts/1 and https://jsonplaceholder.typicod
 */
 
 // Exercise 20
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+// fetchJsonButton.addEventListener("click", () => {
+//   outputDiv.textContent = "Running Promise.all";
+//   Promise.all([
+//     fetch("https://jsonplaceholder.typicode.com/posts/1").then((res) =>
+//       res.json()
+//     ),
+//     fetch("https://jsonplaceholder.typicode.com/posts/2").then((res) =>
+//       res.json()
+//     ),
+//     new Promise((resolve) => setTimeout(resolve, 2000)),
+//   ])
+//     .then(([post1, post2]) => {
+//       outputDiv.textContent = JSON.stringify({ post1, post2 }, null, 2);
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching posts:", error);
+//     });
+// });
 
 /*
 Exercise 21: Chaining Promises for Sequential Requests
@@ -420,8 +483,19 @@ Description: Make a Fetch request to get a post, then use data from the response
 */
 
 // Exercise 21
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+fetchJsonButton.addEventListener("click", () => {
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((response) => response.json())
+    .then((post) => {
+      return fetch(
+        `https://jsonplaceholder.typicode.com/posts/${post.id}/comments`
+      )
+        .then((response) => response.json())
+        .then((comments) => {
+          outputDiv.textContent = JSON.stringify({ post, comments }, null, 2);
+        });
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+});
