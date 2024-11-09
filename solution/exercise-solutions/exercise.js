@@ -36,13 +36,15 @@ exercise1btn.addEventListener("click", () => {
 
 	Description: 
 
-	Implement a function that sends a GET request to 
-	`https://jsonplaceholder.typicode.com/posts/5`,
-	when the button with ID 'exercise-2-btn' is clicked.
-	
-	During the fetch chain, convert the response to text,
-	and display the result in the #section-1-output div.
 
+  Use the Fetch API to make a GET request to 
+	`https://jsonplaceholder.typicode.com/posts/5`
+	when the button with ID 'exercise-2-btn' is clicked. 
+
+  During the fetch response chain, convert the response to text,
+	and display the result in the #section-1-output div.
+	
+	
 */
 
 // Exercise 2
@@ -63,9 +65,9 @@ Exercise 3: Making a POST Request with Fetch
 
 Description: 
 
-Implement a function that sends a POST request to 
+Use the Fetch API to make a POST request to 
 `https://jsonplaceholder.typicode.com/posts`
-with JSON data when the 'exercise-3-btn' is clicked. 
+with JSON data when the 'exercise-3-btn' is clicked.  
 
 Display the response in the #section-1-output div.
 */
@@ -100,17 +102,16 @@ Exercise 4: Understanding HTTP Status Codes
 
 Description: 
 
-Copy your existing exercise 1 addEventListener code below.
+Use the Fetch API to make a GET request to 
+`https://jsonplaceholder.typicode.com/posts/1`
+when the button with ID 'exercise-4-btn' is clicked. 
 
 Modify the GET request to log the HTTP status code to the console. 
 
 Handle the cases for status codes 200 (OK) and 
 404 (Not Found) by displaying appropriate messages.
 
-Have this GET method fire when the 'fetch-json-button-exercise-4' btn 
-is clicked.
-
-Display the response in the #output div.
+Display the response in the #section-1-output div.
 */
 
 // Exercise 4
@@ -141,13 +142,14 @@ Exercise 5: Setting Custom HTTP Headers
 
 Description: 
 
-Copy your existing exercise 3 addEventListener code below.
+Use the Fetch API to make a POST request to 
+`https://jsonplaceholder.typicode.com/posts`
+with JSON data when the 'exercise-5-btn' is clicked.  
 
 Add a custom header X-Custom-Header: MyHeaderValue to the request.
 
-Have the event fire when the 'post-data-button-exercise-5' btn is clicked. 
+Display the response in the #section-1-output div.
 
-Display the response in the #output div.
 */
 
 // Exercise 5
@@ -183,13 +185,16 @@ Exercise 6: Content Negotiation with Accept Header
 
 Description: 
 
-Copy your existing exercise 1 addEventListener code below.
+Use the Fetch API to make a GET request to 
+`https://jsonplaceholder.typicode.com/posts/1`
+when the button with ID 'exercise-6-btn' is clicked. 
 
 Modify the GET request to set the 
 Accept header to 'application/json' and log the 
 response headers to the console.
 
-Have the event fire when the 'fetch-json-button-exercise-6' btn is clicked.
+Display the response data in the div with ID 'section-1-output'
+
 */
 
 // Exercise 6
@@ -219,11 +224,16 @@ Using Try-Catch for Error Handling
 
 Description: 
 
-Copy your existing exercise 2 addEventListener code below.
+Use the Fetch API to make a GET request to 
+`https://jsonplaceholder.typicode.com/posts/5`
+when the button with ID 'exercise-7-btn' is clicked. 
+
+During the fetch response chain, convert the response to text.
 
 Wrap the Fetch call inside a try-catch block to handle any exceptions that may be thrown.
 
-Have the event fire when the 'fetch-text-button-exercise-7' btn is clicked.
+Display the result in the #section-1-output div.
+
 */
 
 // Exercise 7
@@ -245,9 +255,10 @@ Exercise 8: Handling Network Errors
 
 Description: 
 
-Simulate a network error by making a request to an invalid URL and handle the error gracefully by displaying a message in the #output div.
+Simulate a network error by making a request to an invalid URL and 
+handle the error gracefully by displaying a message in the #section-1-output div.
 
-Have the event fire when the 'fetch-invalid-url-exercise-8' btn is clicked.
+Have the event fire when the 'exercise-8-btn' btn is clicked.
 */
 
 // Exercise 8
@@ -270,14 +281,17 @@ Exercise 9: Aborting a Fetch Request
 
 Description: 
 
-Use AbortController to abort a Fetch request when the abort-request-button is clicked. Display a message indicating that the request was aborted.
+Use the Fetch API to make a GET request to 
+`https://jsonplaceholder.typicode.com/posts/1`
+when the button with ID 'exercise-9-btn' is clicked. 
 
-Have the initial fetch event fire when the 'fetch-request-exercise-9' btn is clicked.
+Use AbortController to abort the Fetch request when the #exercise-9-abort-btn 
+is clicked. 
 
-And have the abort event fire when the 'abort-request-button-exercise-9' btn is clicked.
+Display a message indicating that the request was aborted.
 
-We have provided you with a method, `sleep`, that you can use to delay the return
-of your fetch call in time for you to abort it
+We have provided you with a method, `sleep`, that you can use to delay 
+the return of your fetch call in time for you to abort it
 */
 
 // Exercise 9
@@ -322,7 +336,11 @@ exercise9abortBtn.addEventListener("click", () => {
 /*
 Exercise 10: Understanding CORS Errors
 
-Description: Make a Fetch request to an API that does not allow cross-origin requests when the cors-request-button is clicked. Observe and log the CORS error.
+Description: 
+
+Make a Fetch request to an API that does not allow cross-origin requests 
+when the #exercise-10-btn is clicked. Observe and log the CORS error out to 
+#section-2-output.
 */
 
 // Exercise 10
@@ -343,7 +361,13 @@ exercise10btn.addEventListener("click", () => {
 
 /*
 Exercise 11: Configuring a CORS Request
-Description: Modify the request in Exercise 11 to include the mode: 'no-cors' option and observe the changes in the response.
+
+Description: 
+Make a Fetch request to an API that does not allow cross-origin requests 
+when the #exercise-11-btn is clicked. 
+
+Modify the request to include the mode: 'no-cors' option and observe the 
+changes in the response.
 */
 
 // Exercise 11
@@ -361,8 +385,15 @@ exercise11btn.addEventListener("click", () => {
 
 /*
 Exercise 12: Handling Preflight Requests
-Description: Make a Fetch request with the method DELETE to an API endpoint, 
-and observe the preflight OPTIONS request in the Network tab of your browser's developer tools.
+
+Description: 
+
+Make a Fetch request with the method DELETE to the api endpoint:
+`https://jsonplaceholder.typicode.com/posts/1` 
+and observe the preflight OPTIONS request in the Network tab of your 
+browser's developer tools.
+
+Fire this fetch request when the #exercise-12-btn is clicked.
 */
 
 // Exercise 12
@@ -385,7 +416,17 @@ exercise12btn.addEventListener("click", () => {
 
 /*
 Exercise 13: Updating the UI Based on HTTP Responses
-Description: After successfully fetching data in Exercise 1, update the UI by creating a list of titles from the fetched posts.
+
+Description: 
+
+
+Use the Fetch API to make a GET request to 
+`https://jsonplaceholder.typicode.com/posts/1`
+when the button with ID 'exercise-13-btn' is clicked. 
+
+Update the UI by creating a list of titles from the fetched posts and display
+them in #section-2-output
+
 */
 
 // Exercise 13
@@ -410,8 +451,14 @@ exercise13btn.addEventListener("click", () => {
 
 /*
 Exercise 14: Managing a Shopping Cart
-Description: Implement functionality to add products to a shopping cart when the buttons 
-with class 'add-to-cart-button' are clicked. Update the '#cart-output' div to display the list of product IDs in the cart.
+
+Description: 
+
+Implement functionality to add products to a shopping cart when the buttons 
+with class 'add-to-cart-button' are clicked. 
+
+Update the #section-3-output div to display the list of 
+product IDs in the cart.
 */
 
 // Exercise 14
@@ -431,7 +478,11 @@ addToCartButtons.forEach((button) => {
 
 /*
 Exercise 15: Persisting Cart Data with Session Storage
-Description: Modify Exercise 15 to save the cart data in sessionStorage so that the cart persists across page reloads.
+
+Description: 
+
+Modify Exercise 15 to save the cart data in sessionStorage so that the 
+cart persists across page reloads.
 */
 
 // Exercise 15
