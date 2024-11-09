@@ -14,18 +14,16 @@ Display the response data in the #output (ID of 'output') div.
 const fetchJsonButton = document.getElementById("fetch-json-button");
 const outputDiv = document.getElementById("output");
 
-const exercise_1_fetchJsonData_event = () => {
-  fetch("https://jsonplaceholder.typicode.com/posts/1")
-    .then((response) => response.json())
-    .then((data) => {
-      outputDiv.textContent = JSON.stringify(data, null, 2);
-    })
-    .catch((error) => {
-      console.error("Error fetching JSON:", error);
-    });
-};
-
-fetchJsonButton.addEventListener("click", exercise_1_fetchJsonData_event);
+// fetchJsonButton.addEventListener("click", () => {
+//   fetch("https://jsonplaceholder.typicode.com/posts/1")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       outputDiv.textContent = JSON.stringify(data, null, 2);
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching JSON:", error);
+//     });
+// });
 
 /*
 Exercise 2: Handling Text Responses
@@ -41,18 +39,17 @@ and display the result as text in the #output div.
 
 // Exercise 2
 const fetchTextButton = document.getElementById("fetch-text-button");
-const exercise_2_fetchText_event = () => {
-  fetch("https://jsonplaceholder.typicode.com/posts/5")
-    .then((response) => response.text())
-    .then((text) => {
-      outputDiv.textContent = text;
-    })
-    .catch((error) => {
-      console.error("Error fetching text:", error);
-    });
-};
 
-fetchTextButton.addEventListener("click", exercise_2_fetchText_event);
+// fetchTextButton.addEventListener("click", () => {
+//   fetch("https://jsonplaceholder.typicode.com/posts/5")
+//     .then((response) => response.text())
+//     .then((text) => {
+//       outputDiv.textContent = text;
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching text:", error);
+//     });
+// });
 
 /*
 Exercise 3: Making a POST Request with Fetch
@@ -69,30 +66,28 @@ Display the response in the #output div.
 // Exercise 3
 const postDataButton = document.getElementById("post-data-button");
 
-const exercise_3_postData_event = () => {
-  const data = {
-    title: "foo",
-    body: "bar",
-    userId: 1,
-  };
+// postDataButton.addEventListener("click", () => {
+//   const data = {
+//     title: "foo",
+//     body: "bar",
+//     userId: 1,
+//   };
 
-  fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      outputDiv.textContent = JSON.stringify(data, null, 2);
-    })
-    .catch((error) => {
-      console.error("Error posting data:", error);
-    });
-};
-
-postDataButton.addEventListener("click", exercise_3_postData_event);
+//   fetch("https://jsonplaceholder.typicode.com/posts", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       outputDiv.textContent = JSON.stringify(data, null, 2);
+//     })
+//     .catch((error) => {
+//       console.error("Error posting data:", error);
+//     });
+// });
 
 /*
 Exercise 4: Understanding HTTP Status Codes
@@ -106,29 +101,26 @@ Handle the cases for status codes 200 (OK) and
 */
 
 // Exercise 4
-fetchJsonButton.removeEventListener("click", exercise_1_fetchJsonData_event);
-const exercise_4_getJsonData_event = () => {
-  fetch("https://jsonplaceholder.typicode.com/posts/1")
-    .then((response) => {
-      console.log("Status Code:", response.status);
-      if (response.status === 200) {
-        return response.json();
-      } else if (response.status === 404) {
-        throw new Error("Resource not found");
-      } else {
-        throw new Error("An error occurred");
-      }
-    })
-    .then((data) => {
-      outputDiv.textContent = JSON.stringify(data, null, 2);
-    })
-    .catch((error) => {
-      outputDiv.textContent = error.message;
-      console.error("Error fetching JSON:", error);
-    });
-};
-
-fetchJsonButton.addEventListener("click", exercise_4_getJsonData_event);
+// fetchJsonButton.addEventListener("click", () => {
+//   fetch("https://jsonplaceholder.typicode.com/posts/1")
+//     .then((response) => {
+//       console.log("Status Code:", response.status);
+//       if (response.status === 200) {
+//         return response.json();
+//       } else if (response.status === 404) {
+//         throw new Error("Resource not found");
+//       } else {
+//         throw new Error("An error occurred");
+//       }
+//     })
+//     .then((data) => {
+//       outputDiv.textContent = JSON.stringify(data, null, 2);
+//     })
+//     .catch((error) => {
+//       outputDiv.textContent = error.message;
+//       console.error("Error fetching JSON:", error);
+//     });
+// });
 
 /*
 Exercise 5: Setting Custom HTTP Headers
@@ -137,31 +129,29 @@ Description: When making the POST request in Exercise 3, add a custom header X-C
 
 // Exercise 5
 
-fetchJsonButton.removeEventListener("click", exercise_3_postData_event);
-const exercise_5_postData_event = () => {
-  const data = {
-    title: "foo",
-    body: "bar",
-    userId: 1,
-  };
+// postDataButton.addEventListener("click", () => {
+//   const data = {
+//     title: "foo",
+//     body: "bar",
+//     userId: 1,
+//   };
 
-  fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Custom-Header": "MyHeaderValue",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      outputDiv.textContent = JSON.stringify(data, null, 2);
-    })
-    .catch((error) => {
-      console.error("Error posting data:", error);
-    });
-};
-postDataButton.addEventListener("click", exercise_5_postData_event);
+//   fetch("https://jsonplaceholder.typicode.com/posts", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "X-Custom-Header": "MyHeaderValue",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       outputDiv.textContent = JSON.stringify(data, null, 2);
+//     })
+//     .catch((error) => {
+//       console.error("Error posting data:", error);
+//     });
+// });
 
 /*
 Exercise 6: Content Negotiation with Accept Header
@@ -175,25 +165,23 @@ response headers to the console.
 
 // Exercise 6
 
-fetchJsonButton.removeEventListener("click", exercise_4_getJsonData_event);
-const exercise_6_getJsonData_event = () => {
-  fetch("https://jsonplaceholder.typicode.com/posts/1", {
-    headers: {
-      Accept: "application/json",
-    },
-  })
-    .then((response) => {
-      console.log("Response Headers:", response.headers);
-      return response.json();
-    })
-    .then((data) => {
-      outputDiv.textContent = JSON.stringify(data, null, 2);
-    })
-    .catch((error) => {
-      console.error("Error fetching JSON:", error);
-    });
-};
-fetchJsonButton.addEventListener("click", exercise_6_getJsonData_event);
+// fetchJsonButton.addEventListener("click", () => {
+//   fetch("https://jsonplaceholder.typicode.com/posts/1", {
+//     headers: {
+//       Accept: "application/json",
+//     },
+//   })
+//     .then((response) => {
+//       console.log("Response Headers:", response.headers);
+//       return response.json();
+//     })
+//     .then((data) => {
+//       outputDiv.textContent = JSON.stringify(data, null, 2);
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching JSON:", error);
+//     });
+// });
 
 /*
 Exercise 7: Using Try-Catch for Error Handling
@@ -201,19 +189,15 @@ Description: Wrap the Fetch call in Exercise 2 inside a try-catch block to handl
 */
 
 // Exercise 7
-fetchTextButton.removeEventListener("click", exercise_2_fetchText_event);
-const exercise_7_fetchText_event = async () => {
-  try {
-    const response = await fetch(
-      "https://jsonplaceholder.typicode.com/posts/5"
-    );
-    const text = await response.text();
-    outputDiv.textContent = text;
-  } catch (error) {
-    console.error("Error fetching text:", error);
-  }
-};
-fetchTextButton.addEventListener("click", exercise_7_fetchText_event);
+// fetchTextButton.addEventListener("click", async () => {
+//   try {
+//     const response = await fetch("https://jsonplaceholder.typicode.com/posts/5");
+//     const text = await response.text();
+//     outputDiv.textContent = text;
+//   } catch (error) {
+//     console.error("Error fetching text:", error);
+//   }
+// });
 
 /*
 Exercise 8: Handling Network Errors
@@ -221,19 +205,17 @@ Description: Simulate a network error by making a request to an invalid URL and 
 */
 
 // Exercise 8
-fetchJsonButton.removeEventListener("click", exercise_6_getJsonData_event);
-const exercise_8_getJsonData_event = () => {
-  fetch("https://invalid-url")
-    .then((response) => response.json())
-    .then((data) => {
-      outputDiv.textContent = JSON.stringify(data, null, 2);
-    })
-    .catch((error) => {
-      outputDiv.textContent = "Network error occurred";
-      console.error("Network error:", error);
-    });
-};
-fetchJsonButton.addEventListener("click", exercise_8_getJsonData_event);
+// fetchJsonButton.addEventListener("click", () => {
+//   fetch("https://invalid-url")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       outputDiv.textContent = JSON.stringify(data, null, 2);
+//     })
+//     .catch((error) => {
+//       outputDiv.textContent = "Network error occurred";
+//       console.error("Network error:", error);
+//     });
+// });
 
 /*
 Exercise 9: Aborting a Fetch Request
@@ -241,7 +223,6 @@ Description: Use AbortController to abort a Fetch request when the abort-request
 */
 
 // Exercise 9
-fetchJsonButton.removeEventListener("click", exercise_8_getJsonData_event);
 
 const abortRequestButton = document.getElementById("abort-request-button");
 let controller;
@@ -250,7 +231,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const exercise_9_event = async () => {
+fetchJsonButton.addEventListener("click", () => {
   controller = new AbortController();
 
   sleep(5000).then(() =>
@@ -270,30 +251,13 @@ const exercise_9_event = async () => {
         }
       })
   );
-};
+});
 
-fetchJsonButton.addEventListener("click", exercise_9_event);
-
-const exercise_9_abort_event = () => {
+abortRequestButton.addEventListener("click", () => {
   if (controller) {
     controller.abort();
   }
-};
-
-abortRequestButton.addEventListener("click", exercise_9_abort_event);
-
-/*
-Exercise 10: Tracking Download Progress
-Description: Implement a function that downloads a large file using Fetch and streams the 
-response using ReadableStream. Update the progress bar #download-progress as data is received.
-*/
-
-// Exercise 10
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+});
 
 /*
 Exercise 11: Understanding CORS Errors
@@ -301,11 +265,21 @@ Description: Make a Fetch request to an API that does not allow cross-origin req
 */
 
 // Exercise 11
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const corsRequestButton = document.getElementById("cors-request-button");
+const corsOutput = document.getElementById("cors-output");
+const safeForCorsWorkUrl = "https://fsn1-speed.hetzner.com/100MB.bin";
+
+// corsRequestButton.addEventListener("click", () => {
+//   fetch(safeForCorsWorkUrl)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       corsOutput.textContent = JSON.stringify(data, null, 2);
+//     })
+//     .catch((error) => {
+//       corsOutput.textContent = "CORS error occurred";
+//       console.error("CORS error:", error);
+//     });
+// });
 
 /*
 Exercise 12: Configuring a CORS Request
@@ -313,11 +287,16 @@ Description: Modify the request in Exercise 11 to include the mode: 'no-cors' op
 */
 
 // Exercise 12
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+corsRequestButton.addEventListener("click", () => {
+  fetch(safeForCorsWorkUrl, { mode: "no-cors" })
+    .then((response) => {
+      corsOutput.textContent = "Request made with no-cors mode";
+      console.log("Response:", response);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
 
 /*
 Exercise 13: Handling Preflight Requests
@@ -326,11 +305,21 @@ and observe the preflight OPTIONS request in the Network tab of your browser's d
 */
 
 // Exercise 13
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+postDataButton.addEventListener("click", () => {
+  fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "DELETE",
+  })
+    .then((response) => {
+      if (response.ok) {
+        outputDiv.textContent = "Resource deleted successfully";
+      } else {
+        outputDiv.textContent = "Failed to delete resource";
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
 
 /*
 Exercise 14: Updating the UI Based on HTTP Responses
