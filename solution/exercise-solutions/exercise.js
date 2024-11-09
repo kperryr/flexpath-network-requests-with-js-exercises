@@ -69,7 +69,7 @@ Use the Fetch API to make a POST request to
 `https://jsonplaceholder.typicode.com/posts`
 with JSON data when the 'exercise-3-btn' is clicked.  
 
-Display the response in the #section-1-output div.
+Display the response of this POST call in the #section-1-output div.
 */
 
 // Exercise 3
@@ -190,7 +190,7 @@ Use the Fetch API to make a GET request to
 when the button with ID 'exercise-6-btn' is clicked. 
 
 Modify the GET request to set the 
-Accept header to 'application/json' and log the 
+'Accept' header to 'application/json' and log the 
 response headers to the console.
 
 Display the response data in the div with ID 'section-1-output'
@@ -230,7 +230,10 @@ when the button with ID 'exercise-7-btn' is clicked.
 
 During the fetch response chain, convert the response to text.
 
-Wrap the Fetch call inside a try-catch block to handle any exceptions that may be thrown.
+Using async/await syntax to make this fetch call.
+
+Wrap the Fetch call inside a try-catch block to handle any exceptions 
+that may be thrown.
 
 Display the result in the #section-1-output div.
 
@@ -256,9 +259,10 @@ Exercise 8: Handling Network Errors
 Description: 
 
 Simulate a network error by making a request to an invalid URL and 
-handle the error gracefully by displaying a message in the #section-1-output div.
+handle the error gracefully by displaying a message in the 
+#section-1-output div.
 
-Have the event fire when the 'exercise-8-btn' btn is clicked.
+Have the request fire when the 'exercise-8-btn' btn is clicked.
 */
 
 // Exercise 8
@@ -288,7 +292,7 @@ when the button with ID 'exercise-9-btn' is clicked.
 Use AbortController to abort the Fetch request when the #exercise-9-abort-btn 
 is clicked. 
 
-Display a message indicating that the request was aborted.
+Display a message in #section-1-output indicating that the request was aborted.
 
 We have provided you with a method, `sleep`, that you can use to delay 
 the return of your fetch call in time for you to abort it
@@ -341,6 +345,7 @@ Description:
 Make a Fetch request to an API that does not allow cross-origin requests 
 when the #exercise-10-btn is clicked. Observe and log the CORS error out to 
 #section-2-output.
+
 */
 
 // Exercise 10
@@ -363,6 +368,7 @@ exercise10btn.addEventListener("click", () => {
 Exercise 11: Configuring a CORS Request
 
 Description: 
+
 Make a Fetch request to an API that does not allow cross-origin requests 
 when the #exercise-11-btn is clicked. 
 
@@ -454,11 +460,12 @@ Exercise 14: Managing a Shopping Cart
 
 Description: 
 
-Implement functionality to add products to a shopping cart when the buttons 
-with class 'add-to-cart-button' are clicked. 
+Implement functionality to add product ids to a shopping cart array when 
+the buttons with class 'add-to-cart-button' are clicked. 
 
-Update the #section-3-output div to display the list of 
-product IDs in the cart.
+Rely on the buttons `data-product-id` html attributes to grab their product IDs
+
+Display the list of product IDs in the #section-3-output div.
 */
 
 // Exercise 14
