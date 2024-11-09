@@ -260,11 +260,11 @@ Description: Use AbortController to abort a Fetch request when the abort-request
 // });
 
 /*
-Exercise 11: Understanding CORS Errors
+Exercise 10: Understanding CORS Errors
 Description: Make a Fetch request to an API that does not allow cross-origin requests when the cors-request-button is clicked. Observe and log the CORS error.
 */
 
-// Exercise 11
+// Exercise 10
 const corsRequestButton = document.getElementById("cors-request-button");
 const corsOutput = document.getElementById("cors-output");
 const safeForCorsWorkUrl = "https://fsn1-speed.hetzner.com/100MB.bin";
@@ -282,11 +282,11 @@ const safeForCorsWorkUrl = "https://fsn1-speed.hetzner.com/100MB.bin";
 // });
 
 /*
-Exercise 12: Configuring a CORS Request
+Exercise 11: Configuring a CORS Request
 Description: Modify the request in Exercise 11 to include the mode: 'no-cors' option and observe the changes in the response.
 */
 
-// Exercise 12
+// Exercise 11
 corsRequestButton.addEventListener("click", () => {
   fetch(safeForCorsWorkUrl, { mode: "no-cors" })
     .then((response) => {
@@ -299,12 +299,12 @@ corsRequestButton.addEventListener("click", () => {
 });
 
 /*
-Exercise 13: Handling Preflight Requests
+Exercise 12: Handling Preflight Requests
 Description: Make a Fetch request with the method DELETE to an API endpoint, 
 and observe the preflight OPTIONS request in the Network tab of your browser's developer tools.
 */
 
-// Exercise 13
+// Exercise 12
 postDataButton.addEventListener("click", () => {
   fetch("https://jsonplaceholder.typicode.com/posts/1", {
     method: "DELETE",
@@ -322,11 +322,11 @@ postDataButton.addEventListener("click", () => {
 });
 
 /*
-Exercise 14: Updating the UI Based on HTTP Responses
+Exercise 13: Updating the UI Based on HTTP Responses
 Description: After successfully fetching data in Exercise 1, update the UI by creating a list of titles from the fetched posts.
 */
 
-// Exercise 14
+// Exercise 13
 // fetchJsonButton.addEventListener("click", () => {
 //   fetch("https://jsonplaceholder.typicode.com/posts")
 //     .then((response) => response.json())
@@ -346,12 +346,12 @@ Description: After successfully fetching data in Exercise 1, update the UI by cr
 // });
 
 /*
-Exercise 15: Managing a Shopping Cart
+Exercise 14: Managing a Shopping Cart
 Description: Implement functionality to add products to a shopping cart when the buttons 
 with class 'add-to-cart-button' are clicked. Update the '#cart-output' div to display the list of product IDs in the cart.
 */
 
-// Exercise 15
+// Exercise 14
 const addToCartButtons = document.querySelectorAll(".add-to-cart-button");
 const cartOutput = document.getElementById("cart-output");
 let cart = [];
@@ -367,11 +367,11 @@ let cart = [];
 // });
 
 /*
-Exercise 16: Persisting Cart Data with Session Storage
+Exercise 15: Persisting Cart Data with Session Storage
 Description: Modify Exercise 15 to save the cart data in sessionStorage so that the cart persists across page reloads.
 */
 
-// Exercise 16
+// Exercise 15
 // Load cart from sessionStorage
 cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 cartOutput.textContent =
@@ -395,11 +395,11 @@ addToCartButtons.forEach((button) => {
 });
 
 /*
-Exercise 17: Handling Malformed JSON Responses
+Exercise 16: Handling Malformed JSON Responses
 Description: Fetch data from a URL that returns malformed JSON and handle the parsing error using a try-catch block.
 */
 
-// Exercise 17
+// Exercise 16
 // fetchJsonButton.addEventListener("click", async () => {
 //   try {
 //     const response = await fetch(
@@ -420,11 +420,11 @@ Description: Fetch data from a URL that returns malformed JSON and handle the pa
 // });
 
 /*
-Exercise 19: Retrying Failed Requests
+Exercise 17: Retrying Failed Requests
 Description: Implement a function that retries a failed Fetch request up to 3 times before giving up.
 */
 
-// Exercise 19
+// Exercise 17
 function fetchWithRetry(url, options = {}, retries = 3) {
   return fetch(url, options).then((response) => {
     // You can test the failure state by replacing
@@ -452,12 +452,12 @@ function fetchWithRetry(url, options = {}, retries = 3) {
 // });
 
 /*
-Exercise 20: Parallel Requests with Promise.all
+Exercise 18: Parallel Requests with Promise.all
 Description: Make multiple Fetch requests in parallel to 
 https://jsonplaceholder.typicode.com/posts/1 and https://jsonplaceholder.typicode.com/posts/2, and display both responses in the #output div.
 */
 
-// Exercise 20
+// Exercise 18
 // fetchJsonButton.addEventListener("click", () => {
 //   outputDiv.textContent = "Running Promise.all";
 //   Promise.all([
@@ -478,11 +478,11 @@ https://jsonplaceholder.typicode.com/posts/1 and https://jsonplaceholder.typicod
 // });
 
 /*
-Exercise 21: Chaining Promises for Sequential Requests
+Exercise 19: Chaining Promises for Sequential Requests
 Description: Make a Fetch request to get a post, then use data from the response to make another request to get comments for that post. Display the combined data.
 */
 
-// Exercise 21
+// Exercise 19
 fetchJsonButton.addEventListener("click", () => {
   fetch("https://jsonplaceholder.typicode.com/posts/1")
     .then((response) => response.json())
