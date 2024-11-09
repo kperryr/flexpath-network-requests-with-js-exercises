@@ -7,15 +7,15 @@ const section2OutputDiv = document.getElementById("section-2-output");
 const section3OutputDiv = document.getElementById("section-3-output");
 
 /*
-Exercise 1: Making a Simple GET Request with Fetch
+	Exercise 1: Making a Simple GET Request with Fetch
 
-Description: 
+	Description: 
 
-Use the Fetch API to make a GET request to 
-`https://jsonplaceholder.typicode.com/posts/1`
-when the button with ID 'exercise-1-btn' is clicked. 
+	Use the Fetch API to make a GET request to 
+	`https://jsonplaceholder.typicode.com/posts/1`
+	when the button with ID 'exercise-1-btn' is clicked. 
 
-Display the response data in the div with ID 'section-1-output'
+	Display the response data in the div with ID 'section-1-output'
 */
 
 // Exercise 1
@@ -32,14 +32,16 @@ exercise1btn.addEventListener("click", () => {
 });
 
 /*
-Exercise 2: Handling Text Responses
+	Exercise 2: Handling Text Responses
 
-Description: 
+	Description: 
 
-When the button with ID 'exercise-2-btn' is clicked, 
-fetch the content from 
-`https://jsonplaceholder.typicode.com/posts/5` 
-and display the result as text in the #section-1-output div.
+	Implement a function that sends a GET request to 
+	`https://jsonplaceholder.typicode.com/posts/5`,
+	when the button with ID 'exercise-2-btn' is clicked.
+	
+	During the fetch chain, convert the response to text,
+	and display the result in the #section-1-output div.
 
 */
 
