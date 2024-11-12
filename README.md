@@ -3,8 +3,8 @@
 
 ## Exercise overview
 
-The intention of this exercise is to give you more experience manipulating 
-the Document Object Model (DOM) of a webpage using JavaScript.
+The intention of this exercise is to give you more experience creating and 
+managing network requests in the browser using JavaScript.
 
 ## Getting Started
 
