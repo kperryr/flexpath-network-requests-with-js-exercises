@@ -1,36 +1,30 @@
 
 # flexpath-network-requests-with-js-exercises
 
-## [Getting Started]
-
-- include gifs here
-- Include relevant steps to run exercise files or start the app
-- "Open the file located at exercise-repo-name/whatever in VS Code"
-
-- Also, include instructions on how to open their terminal in 
-
-- WHILE DOING THIS, LOOK OUT FOR ANY POTENTIAL WINDOWS FILE PATH ISSUES in exercises
-
-
 ## Exercise overview
 
-Give quick overview about context of exercises and their intention
+The intention of this exercise is to give you more experience manipulating 
+the Document Object Model (DOM) of a webpage using JavaScript.
+
+## Getting Started
 
 
-## Specific exercises listed in numbered order
+1. Using Visual Studio Code, open the folder `flexpath-network-requests-with-js-exercises` 
+   wherever you saved it on your device. 
+2. Then open the `flexpath-network-requests-with-js-exercises/exercise` folder. 
+   Inside is a file named `index.html`. Open this file in your web browser
+   using the methods shown in `flexpath-html-and-css-in-depth-exercises`.
+3. You will write your JavaScript code in `exercise.js`. Any time you make a 
+   change, save the file and then refresh the webpage displaying your .html web
+   page in the browser.
 
-Add disclaimer if exercises are stored inside of specific files as comments
+   We have included a video `js-network-exercises.mp4` showing how to do this.
 
-Also, for a plain text reference, theres always the `EXERCISE-INSTRUCTIONS` files to pop open
+   Exercise instructions are provided to you as code comments in the `exercise.js`
+   file.
+   
 
-To answer questions that don't require coding, please create a file in the repo named 
-[exercise_number_answer].txt.
-
-For example, if in one of the exercise repos question 13 just asked a question to explain a programming concept, store your answer inside of a new file named exercise_13_answer.txt.
-
-## Testing / Verification
-
-Include relevant details here about where solution files are stored
+Exercise solutions are in the `/solution` folder
 
 &nbsp;
 ---
