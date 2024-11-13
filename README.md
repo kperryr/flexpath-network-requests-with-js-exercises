@@ -22,7 +22,9 @@ managing network requests in the browser using JavaScript.
 
    Exercise instructions are provided to you as code comments in the `exercise.js`
    file.
-   
+
+VIDEO DISCLAIMER - You will need to clone the repo to your local device before
+you can watch the .mp4 file since GitHub does not support watching it from here.
 
 Exercise solutions are in the `/solution` folder
 
