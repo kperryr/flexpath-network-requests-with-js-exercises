@@ -19,11 +19,25 @@ const section3OutputDiv = document.getElementById("section-3-output");
 */
 
 // Exercise 1
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+
+function showdata(){
+	fetch("https://jsonplaceholder.typicode.com/posts/1")
+		.then((response) => response.json())
+		.then((data)=> {
+			section1OutputDiv.textContent = JSON.stringify(data,null,2);
+		})
+		.catch((err)=>{
+			console.log(err);
+		});
+
+}
+
+
+let button = document.getElementById('exercise-1-btn');
+button.addEventListener('click', showdata);
+
+
+
 
 /*
 	Exercise 2: Handling Text Responses
@@ -42,11 +56,22 @@ placeholder = `Delete this
 */
 
 // Exercise 2
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+function showdata2(){
+	fetch("https://jsonplaceholder.typicode.com/posts/5")
+		.then((response) => response.text())
+		.then((text)=> {
+			section1OutputDiv.textContent = text;
+		})
+		.catch((err)=>{
+			console.log(err);
+		});
+
+}
+
+
+let button2 = document.getElementById('exercise-2-btn');
+button2.addEventListener('click', showdata2);
+
 
 /*
 Exercise 3: Making a POST Request with Fetch
@@ -61,11 +86,30 @@ Display the response of this POST call in the #section-1-output div.
 */
 
 // Exercise 3
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+function postdata(){
+	const data = {
+    title: "foo",
+    body: "bar",
+    userId: 1,
+  };
+
+	fetch("https://jsonplaceholder.typicode.com/posts",{
+		method: "POST",
+		body:JSON.stringify(data),
+	})
+		.then((response) => response.json())
+		.then((data)=> {
+			section1OutputDiv.textContent = JSON.stringify(data, null, 2);
+		})
+		.catch((err)=>{
+			console.log(err);
+		});
+
+}
+
+
+let button3 = document.getElementById('exercise-3-btn');
+button3.addEventListener('click', postdata);
 
 /*
 Exercise 4: Understanding HTTP Status Codes
@@ -85,11 +129,30 @@ Display the response in the #section-1-output div.
 */
 
 // Exercise 4
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+function showdata3(){
+	fetch("https://jsonplaceholder.typicode.com/posts/1")
+		.then((response) => {
+			console.log("Status Code:", response.status);
+			if (response.status === 200){
+				return response.json();
+			}else if ( response.status === 404){
+				throw new Error("Response not Found")
+			}else{
+				throw new Error("An error happened")
+			}
+		})
+		.then((data)=> {
+			section1OutputDiv.textContent = JSON.stringify(data, null, 2);
+		})
+		.catch((err)=>{
+			console.log(err);
+		});
+
+}
+
+
+let button4 = document.getElementById('exercise-4-btn');
+button4.addEventListener('click', showdata3);
 
 /*
 Exercise 5: Setting Custom HTTP Headers
